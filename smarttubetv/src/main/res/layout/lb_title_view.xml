@@ -43,11 +43,31 @@
             android:transitionGroup="true"
             android:layout_marginStart="@dimen/search_bar_right_items_margin"
             android:nextFocusLeft="@id/title_orb"
-            android:nextFocusRight="@id/language_orb"
+            android:nextFocusRight="@id/search_pill"
             app:searchOrbIcon="@drawable/browse_title_account"
             app:searchOrbColor="@color/orb_color"
             app:searchOrbBrightColor="@color/orb_bright_color"
             app:searchOrbIconColor="@color/orb_icon_color"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/search_pill"
+            android:layout_width="@dimen/yt_search_pill_width"
+            android:layout_height="@dimen/yt_search_pill_height"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/search_bar_right_items_margin"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:gravity="center_vertical|start"
+            android:background="@drawable/yt_search_pill_bg"
+            android:textColor="@color/yt_search_pill_text"
+            android:textSize="16sp"
+            android:text="@string/lb_search_bar_hint"
+            android:focusable="true"
+            android:focusableInTouchMode="false"
+            android:clickable="true"
+            android:nextFocusLeft="@id/account_orb"
+            android:nextFocusRight="@id/language_orb"
             android:visibility="gone" />
 
         <androidx.leanback.widget.SearchOrbView
@@ -56,7 +76,7 @@
             android:layout_height="wrap_content"
             android:transitionGroup="true"
             android:layout_marginStart="@dimen/search_bar_right_items_margin"
-            android:nextFocusLeft="@id/account_orb"
+            android:nextFocusLeft="@id/search_pill"
             android:nextFocusRight="@id/exit_pip"
             app:searchOrbIcon="@drawable/search_bar_language_orb"
             app:searchOrbColor="@color/orb_color"

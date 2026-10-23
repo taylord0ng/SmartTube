@@ -28,7 +28,8 @@
         <TextView android:visibility="invisible"
                   android:id="@+id/extra_text_badge"
                   android:layout_marginEnd="@dimen/lb_basic_card_info_badge_margin"
-                  android:background="@color/black"
+                  android:layout_marginBottom="@dimen/lb_basic_card_info_badge_margin"
+                  android:background="@color/yt_badge_background"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:maxLines="1"
@@ -47,4 +48,13 @@
             android:max="100"
             android:progress="45"/>
     </LinearLayout>
+    <View
+        android:id="@+id/focus_outline"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignTop="@id/main_image"
+        android:layout_alignBottom="@id/main_image"
+        android:layout_alignStart="@id/main_image"
+        android:layout_alignEnd="@id/main_image"
+        android:background="@drawable/yt_card_focus_outline" />
 </merge>

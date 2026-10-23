@@ -81,7 +81,7 @@
     You can also override ShadowOverlayHelper.Options createShadowOverlayOptions() in
     ListRowPresenter which gives you some ability to change corner radius and focused and unfocused z.
     -->
-    <dimen name="lb_rounded_rect_corner_radius">12dp</dimen>
+    <dimen name="lb_rounded_rect_corner_radius">@dimen/yt_card_corner_radius</dimen>
 
     <!-- MOD: Zoom factor of focused button (SearchOrbView, default: 120%) -->
     <!--<item name="lb_search_orb_focused_zoom" type="fraction">120%</item>-->
@@ -102,6 +102,23 @@
     <!-- Browse headers spacing. Origin: 21dp -->
     <!--<dimen name="lb_browse_headers_vertical_spacing">10dp</dimen>-->
     <dimen name="browse_headers_vertical_spacing">10dp</dimen>
+
+    <!-- YouTube TV look: icon-only sidebar. Icon (32dp) + padding must fit in the rail. -->
+    <dimen name="browse_headers_padding_start">20dp</dimen>
+    <dimen name="lb_browse_headers_rail_width">72dp</dimen>
+
+    <dimen name="yt_row_header_text_size">16sp</dimen>
+    <dimen name="yt_card_info_padding_top">8dp</dimen>
+    <dimen name="yt_card_title_text_size">15sp</dimen>
+    <dimen name="yt_card_title_margin_bottom">4dp</dimen>
+    <dimen name="yt_card_content_text_size">12sp</dimen>
+    <dimen name="yt_card_corner_radius">10dp</dimen>
+    <dimen name="yt_card_focus_stroke">3dp</dimen>
+    <dimen name="yt_badge_corner_radius">4dp</dimen>
+    <dimen name="yt_search_pill_width">300dp</dimen>
+    <dimen name="yt_search_pill_height">40dp</dimen>
+    <dimen name="yt_logo_icon_height">22dp</dimen>
+    <dimen name="yt_logo_text_size">22sp</dimen>
 
     <!-- Vine card widget values -->
     <dimen name="lb_basic_card_main_width">140dp</dimen>

@@ -3,12 +3,11 @@ package com.liskovsoft.smartyoutubetv2.tv.presenter;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.util.Pair;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.leanback.widget.Presenter;
@@ -18,7 +17,6 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
-import com.liskovsoft.sharedutils.helpers.Helpers;
 import com.liskovsoft.sharedutils.mylogger.Log;
 import com.liskovsoft.smartyoutubetv2.common.app.models.data.Video;
 import com.liskovsoft.smartyoutubetv2.common.prefs.MainUIData;
@@ -35,10 +33,6 @@ import com.liskovsoft.smartyoutubetv2.tv.util.ViewUtil;
  */
 public class VideoCardPresenter extends LongClickPresenter {
     private static final String TAG = VideoCardPresenter.class.getSimpleName();
-    private int mDefaultBackgroundColor = -1;
-    private int mDefaultTextColor = -1;
-    private int mSelectedBackgroundColor = -1;
-    private int mSelectedTextColor = -1;
     private int mCardPreviewType;
     private int mThumbQuality;
     private int mWidth;
@@ -47,15 +41,6 @@ public class VideoCardPresenter extends LongClickPresenter {
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent) {
         Context context = parent.getContext();
-
-        mDefaultBackgroundColor =
-            ContextCompat.getColor(context, Helpers.getThemeAttr(context, R.attr.cardDefaultBackground));
-        mDefaultTextColor =
-                ContextCompat.getColor(context, R.color.card_default_text);
-        mSelectedBackgroundColor =
-                ContextCompat.getColor(context, Helpers.getThemeAttr(context, R.attr.cardSelectedBackground));
-        mSelectedTextColor =
-                ContextCompat.getColor(context, R.color.card_selected_text_grey);
 
         mCardPreviewType = getCardPreviewType(context);
         mThumbQuality = getThumbQuality(context);
@@ -67,13 +52,7 @@ public class VideoCardPresenter extends LongClickPresenter {
 
         updateDimensions(context);
 
-        ComplexImageCardView cardView = new ComplexImageCardView(context) {
-            @Override
-            public void setSelected(boolean selected) {
-                updateCardBackgroundColor(this, selected);
-                super.setSelected(selected);
-            }
-        };
+        ComplexImageCardView cardView = new ComplexImageCardView(context);
 
         cardView.setTitleLinesNum(isCardMultilineTitleEnabled ? 2 : 1);
         cardView.setContentLinesNum(isCardMultilineSubtitleEnabled ? 2 : 1);
@@ -84,36 +63,8 @@ public class VideoCardPresenter extends LongClickPresenter {
         cardView.enableBadge(isBadgeEnabled());
         cardView.enableTitle(isTitleEnabled());
         cardView.enableContent(isContentEnabled());
-        cardView.setBackgroundColor(mDefaultBackgroundColor); // background is temporarily visible during animations
-        //if (VERSION.SDK_INT >= 23 && MainUIData.instance(context).isUiTweakEnabled(MainUIData.UI_TWEAK_ROUNDED_CORNERS)) {
-        //    cardView.setForeground(ContextCompat.getDrawable(context, R.drawable.lb_card_outline));
-        //}
-        updateCardBackgroundColor(cardView, false);
+        cardView.setBackgroundColor(Color.TRANSPARENT);
         return new ViewHolder(cardView);
-    }
-
-    private void updateCardBackgroundColor(ComplexImageCardView view, boolean selected) {
-        int backgroundColor = selected ? mSelectedBackgroundColor : mDefaultBackgroundColor;
-        int textColor = selected ? mSelectedTextColor : mDefaultTextColor;
-
-        // Both background colors should be set because the view's
-        // background is temporarily visible during animations.
-        // NOTE: has visual bug with rounded corners
-        //view.setBackgroundColor(backgroundColor);
-
-        View infoField = view.findViewById(R.id.info_field);
-        if (infoField != null) {
-            infoField.setBackgroundColor(backgroundColor);
-        }
-
-        TextView titleText = view.findViewById(R.id.title_text);
-        if (titleText != null) {
-            titleText.setTextColor(textColor);
-        }
-        TextView contentText = view.findViewById(R.id.content_text);
-        if (contentText != null) {
-            contentText.setTextColor(textColor);
-        }
     }
 
     @Override
@@ -136,7 +87,7 @@ public class VideoCardPresenter extends LongClickPresenter {
                 video.badge
         );
         cardView.setBadgeColor(video.hasNewContent || video.isLive || video.isUpcoming ?
-                ContextCompat.getColor(context, R.color.dark_red) : ContextCompat.getColor(context, R.color.black));
+                ContextCompat.getColor(context, R.color.yt_red) : ContextCompat.getColor(context, R.color.yt_badge_background));
 
         if (mCardPreviewType != MainUIData.CARD_PREVIEW_DISABLED) {
             cardView.setPreview(video);

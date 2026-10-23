@@ -46,6 +46,14 @@
     <color name="scheme_blue_background">#33B5E5</color>
     <color name="scheme_blue_background_dark">#207EA1</color>
 
+    <!-- YouTube TV look -->
+    <color name="yt_background">#0F0F0F</color>
+    <color name="yt_surface">#272727</color>
+    <color name="yt_text_primary">#F1F1F1</color>
+    <color name="yt_text_secondary">#AAAAAA</color>
+    <color name="yt_red">#FF0000</color>
+    <color name="yt_badge_background">#CC000000</color>
+
     <!-- Vineyard -->
     <color name="black_87pc">#77000000</color>
     <color name="primary_dark">#00796B</color>

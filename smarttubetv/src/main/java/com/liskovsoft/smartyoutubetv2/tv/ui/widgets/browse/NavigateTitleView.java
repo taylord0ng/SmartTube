@@ -22,6 +22,7 @@ import com.liskovsoft.mediaserviceinterfaces.oauth.Account;
 import com.liskovsoft.sharedutils.locale.LocaleUtility;
 import com.liskovsoft.smartyoutubetv2.common.app.models.data.Video;
 import com.liskovsoft.smartyoutubetv2.common.app.presenters.PlaybackPresenter;
+import com.liskovsoft.smartyoutubetv2.common.app.presenters.SearchPresenter;
 import com.liskovsoft.smartyoutubetv2.common.app.presenters.dialogs.AccountSelectionPresenter;
 import com.liskovsoft.smartyoutubetv2.common.app.presenters.settings.AccountSettingsPresenter;
 import com.liskovsoft.smartyoutubetv2.common.app.presenters.settings.LanguageSettingsPresenter;
@@ -53,6 +54,8 @@ import static androidx.leanback.widget.TitleViewAdapter.SEARCH_VIEW_VISIBLE;
  */
 public class NavigateTitleView extends TitleView implements OnDataChange, AccountChangeListener {
     private LongClickSearchOrbView mAccountView;
+    private View mSearchPill;
+    private View mYouTubeLogo;
     private SearchOrbView mLanguageView;
     private SearchOrbView mExitPip;
     private TextView mPipTitle;
@@ -156,6 +159,9 @@ public class NavigateTitleView extends TitleView implements OnDataChange, Accoun
             mAccountView.setVisibility(mSearchVisibility);
         }
 
+        mSearchPill.setVisibility(mSearchVisibility);
+        mYouTubeLogo.setVisibility(mBrandingVisibility);
+
         if (mIsLanguageViewEnabled) {
             mLanguageView.setVisibility(mSearchVisibility);
         }
@@ -201,6 +207,11 @@ public class NavigateTitleView extends TitleView implements OnDataChange, Accoun
             return true;
         });
         TooltipCompatHandler.setTooltipText(mAccountView, getContext().getString(R.string.settings_accounts));
+
+        mSearchPill = findViewById(R.id.search_pill);
+        mSearchPill.setOnClickListener(v -> SearchPresenter.instance(getContext()).startSearch(null));
+
+        mYouTubeLogo = findViewById(R.id.youtube_logo);
 
         mLanguageView = findViewById(R.id.language_orb);
         mLanguageView.setOnOrbClickedListener(v -> LanguageSettingsPresenter.instance(getContext()).show());

@@ -3,6 +3,7 @@
 <!-- Title Logo with embedded clock -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:layout_gravity="center_vertical|end"
@@ -61,4 +62,31 @@
             android:layout_height="@dimen/lb_browse_title_height"
             style="?attr/browseTitleTextStyle"/>
     </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/youtube_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="@dimen/search_bar_right_items_margin"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/yt_logo_icon_height"
+            android:adjustViewBounds="true"
+            android:contentDescription="@null"
+            android:src="@drawable/yt_logo_icon" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:includeFontPadding="false"
+            android:fontFamily="sans-serif-condensed"
+            android:text="YouTube"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/yt_logo_text_size"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
 </LinearLayout>
