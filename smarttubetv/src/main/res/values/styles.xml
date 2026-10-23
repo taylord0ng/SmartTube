@@ -31,6 +31,7 @@
         <item name="android:textStyle">bold</item>
         <item name="android:fontFamily">sans-serif</item>
     </style>
+    <style name="YtHeaderLabel" parent="TextAppearance.Leanback.Header" />
     <style name="YtRowHeaderStyle" parent="Widget.Leanback.Row.Header">
         <item name="android:textAppearance">@style/YtRowHeaderText</item>
     </style>
@@ -55,7 +56,12 @@
     </style>
 
     <!-- Color scheme: Teal (Default) -->
-    <style name="App.Theme.Leanback.Player" parent="Theme.Leanback">
+    <!-- Font hooks: values-v26 sets Roboto here (font resources need API 26 in XML) -->
+    <style name="App.Theme.FontBase" parent="Theme.Leanback" />
+    <style name="App.Theme.FontBase.Browse" parent="Theme.Leanback.Browse" />
+    <style name="App.Theme.FontBase.GuidedStep" parent="Theme.Leanback.GuidedStep" />
+
+    <style name="App.Theme.Leanback.Player" parent="App.Theme.FontBase">
         <!-- <item name="android:windowBackground">@null</item> -->
         <!-- NOTE: don't use transparency because the BackgroundManager won't work (BackgroundManager:778) -->
         <item name="android:windowBackground">@android:color/black</item>
@@ -78,7 +84,7 @@
         <item tools:targetApi="18" name="android:windowOverscan">true</item>
         <item name="android:windowContentOverlay">@null</item>
     </style>
-    <style name="App.Theme.Leanback.Browse" parent="Theme.Leanback.Browse">
+    <style name="App.Theme.Leanback.Browse" parent="App.Theme.FontBase.Browse">
         <item name="android:windowBackground">@color/yt_background</item>
         <item name="brandColor">@color/yt_background</item>
         <item name="brandAccentColor">@color/yt_red</item>
@@ -105,7 +111,7 @@
         <item tools:targetApi="18" name="android:windowOverscan">true</item>
         <item name="android:windowContentOverlay">@null</item>
     </style>
-    <style name="App.Theme.Leanback.GuidedStep" parent="Theme.Leanback.GuidedStep">
+    <style name="App.Theme.Leanback.GuidedStep" parent="App.Theme.FontBase.GuidedStep">
         <item name="android:windowBackground">@color/shelf_background_dark</item>
         <item name="shelfBackground">@color/shelf_background_dark</item>
         <!-- Disable activity transition animations -->
@@ -116,7 +122,7 @@
         <item tools:targetApi="19" name="android:windowTranslucentNavigation">true</item>
     </style>
     <!-- AppDialogFragment style -->
-    <style name="App.Theme.Leanback.Preferences.Base" parent="Theme.Leanback">
+    <style name="App.Theme.Leanback.Preferences.Base" parent="App.Theme.FontBase">
         <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Leanback</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>

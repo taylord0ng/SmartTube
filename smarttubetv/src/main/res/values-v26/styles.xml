@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Roboto (Apache License 2.0), the typeface of YouTube for Android TV -->
+<resources>
+    <style name="App.Theme.FontBase" parent="Theme.Leanback">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+    </style>
+    <style name="App.Theme.FontBase.Browse" parent="Theme.Leanback.Browse">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+    </style>
+    <style name="App.Theme.FontBase.GuidedStep" parent="Theme.Leanback.GuidedStep">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+    </style>
+
+    <style name="YtRowHeaderText" parent="TextAppearance.Leanback.Row.Header">
+        <item name="android:textSize">@dimen/yt_row_header_text_size</item>
+        <item name="android:textColor">@color/yt_text_primary</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+    </style>
+    <style name="YtCardTitleStyle" parent="Widget.Leanback.ImageCardView.TitleStyle">
+        <item name="android:textColor">@color/yt_text_primary</item>
+        <item name="android:textSize">@dimen/yt_card_title_text_size</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:layout_marginBottom">@dimen/yt_card_title_margin_bottom</item>
+    </style>
+    <style name="YtCardContentStyle" parent="Widget.Leanback.ImageCardView.ContentStyle">
+        <item name="android:textColor">@color/yt_text_secondary</item>
+        <item name="android:textSize">@dimen/yt_card_content_text_size</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+    </style>
+    <style name="YtHeaderLabel" parent="TextAppearance.Leanback.Header">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+    </style>
+</resources>
